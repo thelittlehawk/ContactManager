@@ -1,0 +1,21 @@
+@(contacts: List[models.Contact])
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Email Address</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    @contacts.map { contact =>
+      <tr>
+        <td>@contact.name</td>
+        <td>@contact.emailAddress</td>
+        <td>
+          <a href='@routes.Contacts.edit(contact.id)'>Edit</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

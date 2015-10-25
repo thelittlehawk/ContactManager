@@ -1,7 +1,15 @@
-@(message: String)
+@(names: List[models.Contact], contact: Form[models.Contact])
 
-@main("Welcome to contact manager application") {
+@layout {
 
-    @play20.welcome(message)
+  <h2>New Contact</h2>
 
+  @helper.form(action = routes.Contacts.create) {
+    @helper.inputText(contact("name"), '_label -> "Name")
+    @helper.inputText(contact("emailAddress"), '_label -> "Email address")
+
+    <input type="submit" value="New Contact" />
+  }
+
+  @namelist(names)
 }
